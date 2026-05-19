@@ -5,19 +5,29 @@ import { AnimatePresence, motion } from "motion/react";
 
 const RADIUS = 80;
 const CIRCUMFERENCE = 2 * Math.PI * RADIUS;
+const SESSION_KEY = "portfolio-enso-seen";
 
 export function EnsoLoader() {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
+
+    if (sessionStorage.getItem(SESSION_KEY)) {
+      setVisible(false);
+      return;
+    }
+
     const reduced = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     ).matches;
 
-    const dismiss = () => setVisible(false);
     const ms = reduced ? 200 : 1500;
-    const t = window.setTimeout(dismiss, ms);
+    const t = window.setTimeout(() => {
+      sessionStorage.setItem(SESSION_KEY, "1");
+      setVisible(false);
+    }, ms);
+
     return () => window.clearTimeout(t);
   }, []);
 
@@ -38,7 +48,6 @@ export function EnsoLoader() {
             className="text-[var(--color-sumi)]"
             aria-hidden="true"
           >
-            {/* Enso (円相) — imperfect zen circle drawn left to right */}
             <motion.circle
               cx="110"
               cy="110"
@@ -56,7 +65,6 @@ export function EnsoLoader() {
               transition={{ duration: 1.1, ease: [0.7, 0, 0.3, 1] }}
               style={{ transformOrigin: "110px 110px" }}
             />
-            {/* Brush bleed — small drips at end of stroke */}
             <motion.circle
               cx="180"
               cy="118"

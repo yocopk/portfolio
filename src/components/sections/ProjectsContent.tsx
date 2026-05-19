@@ -1,14 +1,47 @@
 "use client";
 
+import { useRef } from "react";
 import { useLocale, useTranslations } from "next-intl";
+import { motion, useInView } from "motion/react";
 import { ArrowUpRight, Github } from "lucide-react";
-import { BentoCard } from "@/components/ui/BentoCard";
-import { KanjiLabel } from "@/components/ui/KanjiLabel";
 import { BrushArt } from "@/components/ui/BrushArt";
 import { projects, type Project } from "@/content/projects";
 import { cn } from "@/lib/utils";
 
 const ART_VARIANTS = ["mountain", "wave", "circle", "bamboo"] as const;
+
+const LAYOUT_SPANS = [
+  "md:col-span-8",
+  "md:col-span-4",
+  "md:col-span-5",
+  "md:col-span-7",
+];
+
+export function ProjectsContent() {
+  const t = useTranslations("work");
+  const locale = useLocale() as "en" | "it";
+  const featured = projects.filter((p) => p.featured);
+
+  return (
+    <section className="relative px-6 py-12 md:px-10 md:py-16">
+      <div className="mx-auto max-w-7xl">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-12 md:gap-5">
+          {featured.map((p, i) => (
+            <ProjectCard
+              key={p.slug}
+              project={p}
+              locale={locale}
+              index={i}
+              span={LAYOUT_SPANS[i] ?? "md:col-span-6"}
+              size={i === 0 ? "lg" : "md"}
+              t={t}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
 
 function ProjectCard({
   project,
@@ -22,20 +55,28 @@ function ProjectCard({
   locale: "en" | "it";
   index: number;
   span: string;
-  size?: "lg" | "md" | "sm";
-  t: ReturnType<typeof useTranslations<"work">>;
+  size?: "lg" | "md";
+  t: ReturnType<typeof useTranslations>;
 }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, amount: 0.15 });
+
   const isLarge = size === "lg";
   const variant = ART_VARIANTS[index % ART_VARIANTS.length];
 
   return (
-    <BentoCard
-      span={cn(span, "group relative overflow-hidden")}
-      delay={0.05 * index}
-      interactive
-      className="min-h-[280px] md:min-h-[340px]"
+    <motion.article
+      ref={ref}
+      initial={{ opacity: 0, y: 28, filter: "blur(8px)" }}
+      animate={inView ? { opacity: 1, y: 0, filter: "blur(0px)" } : undefined}
+      transition={{ duration: 0.9, delay: 0.07 * index, ease: [0.16, 1, 0.3, 1] }}
+      className={cn(
+        "col-span-1",
+        span,
+        "bento-card group relative min-h-[320px] overflow-hidden transition-transform duration-500 hover:-translate-y-1 hover:rotate-[-0.2deg] hover:shadow-[var(--shadow-paper-lift)] md:min-h-[380px]",
+      )}
     >
-      {/* Decorative sumi-e art */}
+      {/* Sumi-e decorative art */}
       <div
         aria-hidden="true"
         className="absolute inset-0 transition-transform duration-700 ease-[var(--ease-zen)] group-hover:scale-105"
@@ -43,8 +84,7 @@ function ProjectCard({
         <BrushArt variant={variant} accent={project.accent ?? "sumi"} />
       </div>
 
-      <div className="relative flex h-full flex-col gap-5 p-6 md:p-8">
-        {/* Top row: year + accent */}
+      <div className="relative flex h-full flex-col gap-5 p-6 md:p-9">
         <div className="flex items-start justify-between gap-4">
           <span className="font-mono-ui text-[10px] uppercase tracking-[0.22em] text-[var(--color-stone)]">
             {project.year}
@@ -62,12 +102,13 @@ function ProjectCard({
           />
         </div>
 
-        {/* Title */}
         <div className="flex flex-col gap-2">
           <h3
             className={cn(
               "font-display tracking-[-0.02em] text-[var(--color-sumi)]",
-              isLarge ? "text-4xl md:text-5xl lg:text-6xl" : "text-2xl md:text-3xl",
+              isLarge
+                ? "text-4xl md:text-5xl lg:text-6xl"
+                : "text-2xl md:text-3xl",
             )}
             style={{ lineHeight: 0.95 }}
           >
@@ -83,7 +124,6 @@ function ProjectCard({
           </p>
         </div>
 
-        {/* Description — visible always on large, on hover on small */}
         <p
           className={cn(
             "max-w-prose text-sm leading-relaxed text-[var(--color-sumi-soft)]/85",
@@ -93,7 +133,12 @@ function ProjectCard({
           {project.description[locale]}
         </p>
 
-        {/* Bottom: stack + links */}
+        {/* Meta — role + year mono */}
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-1 font-mono-ui text-[10px] uppercase tracking-[0.18em] text-[var(--color-stone)]">
+          <span>{t("role")} <span className="text-[var(--color-sumi)]">· {project.role[locale]}</span></span>
+          <span>{t("year")} <span className="text-[var(--color-sumi)]">· {project.year}</span></span>
+        </div>
+
         <div className="mt-auto flex flex-wrap items-end justify-between gap-3 pt-2">
           <ul className="flex flex-wrap gap-1.5">
             {project.stack.slice(0, isLarge ? 6 : 4).map((tech) => (
@@ -113,7 +158,6 @@ function ProjectCard({
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`${project.title} — ${t("viewCode")}`}
-                data-cursor="hover"
                 className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[var(--color-sumi)]/12 bg-[var(--color-washi)]/50 text-[var(--color-sumi)] transition-colors hover:bg-[var(--color-sumi)] hover:text-[var(--color-washi)]"
               >
                 <Github className="h-4 w-4" />
@@ -125,7 +169,6 @@ function ProjectCard({
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`${project.title} — ${t("viewLive")}`}
-                data-cursor="hover"
                 className="inline-flex items-center gap-1.5 rounded-full bg-[var(--color-sumi)] px-4 py-2 font-mono-ui text-[10px] uppercase tracking-[0.18em] text-[var(--color-washi)] transition-transform hover:scale-[1.03]"
               >
                 {t("viewLive")} <ArrowUpRight className="h-3.5 w-3.5" />
@@ -134,67 +177,6 @@ function ProjectCard({
           </div>
         </div>
       </div>
-    </BentoCard>
-  );
-}
-
-export function ProjectsSection() {
-  const t = useTranslations("work");
-  const locale = useLocale() as "en" | "it";
-  const featured = projects.filter((p) => p.featured);
-
-  // Asymmetric bento layout — col spans on a 12-col grid.
-  // Wabi-sabi: nothing is the same size.
-  const layouts = [
-    "col-span-12 md:col-span-8",  // Hero project
-    "col-span-12 md:col-span-4",  // Tall companion
-    "col-span-12 md:col-span-5",  // Medium
-    "col-span-12 md:col-span-7",  // Wider
-  ];
-
-  return (
-    <section
-      id="work"
-      className="relative px-6 py-[var(--space-section)] md:px-10"
-    >
-      <div className="mx-auto max-w-7xl">
-        {/* Section heading */}
-        <div className="mb-10 flex flex-wrap items-end justify-between gap-6 md:mb-14">
-          <KanjiLabel
-            glyph={t("kanji")}
-            reading={t("reading")}
-            label={t("label")}
-            meaning="work · craft"
-            size="lg"
-          />
-          <div className="flex flex-col items-end gap-2">
-            <h2
-              className="font-display tracking-[-0.02em] text-[var(--color-sumi)]"
-              style={{ fontSize: "var(--text-display)" }}
-            >
-              {t("title")}
-            </h2>
-            <p className="max-w-md text-right font-mono-ui text-[11px] uppercase tracking-[0.18em] text-[var(--color-stone)]">
-              {t("intro")}
-            </p>
-          </div>
-        </div>
-
-        {/* Bento grid */}
-        <div className="grid grid-cols-12 gap-4 md:gap-5">
-          {featured.map((p, i) => (
-            <ProjectCard
-              key={p.slug}
-              project={p}
-              locale={locale}
-              index={i}
-              span={layouts[i] ?? "col-span-12 md:col-span-6"}
-              size={i === 0 ? "lg" : "md"}
-              t={t}
-            />
-          ))}
-        </div>
-      </div>
-    </section>
+    </motion.article>
   );
 }

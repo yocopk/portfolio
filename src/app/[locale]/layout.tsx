@@ -8,11 +8,17 @@ import {
 } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
+import { Header } from "@/components/layout/Header";
+import { Footer } from "@/components/layout/Footer";
+import { SmoothScroll } from "@/components/motion/SmoothScroll";
+import { EnsoLoader } from "@/components/motion/EnsoLoader";
+import "../globals.css";
 
-function isValidLocale(value: string): value is (typeof routing.locales)[number] {
+function isValidLocale(
+  value: string,
+): value is (typeof routing.locales)[number] {
   return (routing.locales as readonly string[]).includes(value);
 }
-import "../globals.css";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -82,15 +88,10 @@ export async function generateMetadata({
     },
     alternates: {
       canonical: `/${locale}`,
-      languages: {
-        en: "/en",
-        it: "/it",
-      },
+      languages: { en: "/en", it: "/it" },
     },
     icons: {
-      icon: [
-        { url: "/favicon.svg", type: "image/svg+xml" },
-      ],
+      icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
     },
   };
 }
@@ -107,13 +108,9 @@ export default async function LocaleLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-
-  if (!isValidLocale(locale)) {
-    notFound();
-  }
+  if (!isValidLocale(locale)) notFound();
 
   setRequestLocale(locale);
-
   const messages = await getMessages();
 
   return (
@@ -130,7 +127,14 @@ export default async function LocaleLayout({
           Skip to content
         </a>
         <NextIntlClientProvider locale={locale} messages={messages}>
-          {children}
+          <SmoothScroll>
+            <EnsoLoader />
+            <Header />
+            <main id="top" className="relative pt-24 md:pt-28">
+              {children}
+            </main>
+            <Footer />
+          </SmoothScroll>
         </NextIntlClientProvider>
       </body>
     </html>

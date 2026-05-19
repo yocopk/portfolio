@@ -4,9 +4,15 @@
     "description": "Portfolio of Andrea Marchese, Full Stack developer building products with TypeScript, Next.js, Go and a quiet love for craft. Based in Italy.",
     "keywords": "Andrea Marchese, full stack developer, Next.js, TypeScript, Go, Italian developer, portfolio"
   },
+  "pageMeta": {
+    "about": "About — Andrea Marchese",
+    "work": "Selected work — Andrea Marchese",
+    "journey": "Journey — Andrea Marchese",
+    "contact": "Contact — Andrea Marchese"
+  },
   "nav": {
+    "home": "Home",
     "about": "About",
-    "skills": "Skills",
     "work": "Work",
     "journey": "Journey",
     "contact": "Contact",
@@ -18,23 +24,86 @@
     "status": "Open to opportunities",
     "role": "Full Stack Developer",
     "tagline": "I build things that ship.",
-    "intro": "Crafting durable web products with TypeScript, Next.js and a samurai's discipline.",
+    "intro": "Durable web products in TypeScript, Next.js and a quiet, samurai-like discipline.",
     "scroll": "Scroll to enter",
-    "based": "Based in Italy"
+    "based": "Based in Italy",
+    "exploreAbout": "Read my story",
+    "exploreWork": "See selected work"
+  },
+  "home": {
+    "pulse": {
+      "label": "Currently",
+      "title": "Building MogHouse — a home for FFXIV players.",
+      "items": [
+        "Listening to lo-fi shamisen",
+        "Reading «Hagakure»",
+        "Training hiragana → katakana"
+      ]
+    },
+    "teaserHeading": "Where to go next.",
+    "teaserIntro": "The site has four chapters. Pick the one that matches what you came for.",
+    "teasers": {
+      "about": {
+        "label": "About",
+        "title": "Who's behind the keyboard.",
+        "blurb": "A short bio, what I care about, and the discipline I bring to software.",
+        "cta": "Read about"
+      },
+      "work": {
+        "label": "Work",
+        "title": "Things I've shipped.",
+        "blurb": "A deliberate selection of products and platforms I've designed and built end-to-end.",
+        "cta": "See work"
+      },
+      "journey": {
+        "label": "Journey",
+        "title": "The path so far.",
+        "blurb": "Roles, turning points, lessons learned along the way.",
+        "cta": "Open timeline"
+      },
+      "contact": {
+        "label": "Contact",
+        "title": "Let's build something.",
+        "blurb": "Available for thoughtful roles and freelance engagements.",
+        "cta": "Get in touch"
+      }
+    },
+    "finalCta": {
+      "kicker": "If you read this far",
+      "title": "We should probably talk.",
+      "lead": "Whether it's a role, a project, or just a thoughtful conversation about software — I'd love to hear from you.",
+      "primary": "Email me",
+      "secondary": "Browse the work"
+    }
   },
   "about": {
-    "kanji": "我",
-    "reading": "ware",
-    "label": "About",
+    "kicker": "About",
     "title": "Curious by default.",
-    "body": "I'm Andrea — a Full Stack developer who treats software like a craft. I care about the small details: a button that feels right, a query that doesn't slow down at 100k rows, a UI that respects the user's time. Influenced equally by editorial design and by the bushidō — the way of disciplined improvement.",
-    "footnote": "Italian. Builder. Reader. Aspiring iaidoka."
-  },
-  "skills": {
-    "kanji": "技",
-    "reading": "waza",
-    "label": "Skills",
-    "title": "The toolkit.",
+    "lead": "I'm Andrea — a Full Stack developer who treats software like a craft. I care about the small details: a button that feels right, a query that doesn't slow at 100k rows, a UI that respects the user's time.",
+    "body": [
+      "I work mainly with TypeScript on the web — Next.js, React, Node — but I move comfortably across the stack: Postgres, Go for performance-critical pieces, Python for data and ML glue.",
+      "My approach is shaped equally by editorial design and by the bushidō — the way of disciplined improvement. I prefer one well-made thing over five rushed ones. Boring fundamentals over flashy abstractions. Production lessons over hype.",
+      "Outside the editor I read, train iaidō (slowly), and travel — Japan, mostly, where the obsession with craft feels like home."
+    ],
+    "values": {
+      "label": "What I value",
+      "items": [
+        {
+          "title": "Craft over speed",
+          "body": "Slower, more deliberate work compounds. Shipping fast on a rotten foundation is a tax someone always pays later."
+        },
+        {
+          "title": "Clarity over cleverness",
+          "body": "Readable code is kinder to your future self and to the next person who walks in. Abstractions earn their place."
+        },
+        {
+          "title": "Respect the user",
+          "body": "Their time, their bandwidth, their attention, their accessibility. None of those should be afterthoughts."
+        }
+      ]
+    },
+    "skillsLabel": "The toolkit",
+    "skillsIntro": "Comfortable across the stack. Honest about what I'm fluent in and what I'm still learning.",
     "categories": {
       "frontend": "Frontend",
       "backend": "Backend",
@@ -42,11 +111,41 @@
       "ops": "DevOps & Tools"
     }
   },
+  "work": {
+    "kicker": "Selected work",
+    "title": "Things I've shipped.",
+    "lead": "A short, deliberate selection — quality over quantity. Most projects are end-to-end: product, design, build, deploy.",
+    "viewCase": "View case",
+    "viewLive": "Visit site",
+    "viewCode": "Source",
+    "tech": "Stack",
+    "role": "Role",
+    "year": "Year"
+  },
+  "journey": {
+    "kicker": "Journey",
+    "title": "The path so far.",
+    "lead": "Roles, milestones and turning points. No fluff."
+  },
+  "contact": {
+    "kicker": "Contact",
+    "title": "Let's build something.",
+    "lead": "I'm open to interesting roles, freelance work, and good conversations about software, design, and the occasional kanji.",
+    "emailMe": "Email me",
+    "social": "Find me elsewhere",
+    "copy": "Copy email",
+    "copied": "Copied",
+    "responseTime": "I usually reply within a day or two.",
+    "form": {
+      "name": "Your name",
+      "email": "Your email",
+      "message": "What's on your mind?",
+      "send": "Send"
+    }
+  },
   "stats": {
-    "kanji": "統計",
-    "reading": "tōkei",
-    "label": "Live stats",
-    "title": "Pulse from GitHub",
+    "label": "Live pulse",
+    "title": "GitHub activity",
     "repos": "Public repos",
     "stars": "Stars earned",
     "followers": "Followers",
@@ -54,39 +153,10 @@
     "updated": "Updated hourly",
     "error": "Stats temporarily unavailable"
   },
-  "work": {
-    "kanji": "業",
-    "reading": "waza",
-    "label": "Selected work",
-    "title": "Things I've shipped.",
-    "intro": "A short, deliberate selection — quality over quantity.",
-    "viewCase": "View case",
-    "viewLive": "Visit site",
-    "viewCode": "Source",
-    "tech": "Stack"
-  },
-  "journey": {
-    "kanji": "道",
-    "reading": "michi",
-    "label": "Journey",
-    "title": "The path so far.",
-    "intro": "Roles, milestones and turning points."
-  },
-  "contact": {
-    "kanji": "縁",
-    "reading": "en",
-    "label": "Connect",
-    "title": "Let's build something.",
-    "intro": "I'm open to interesting roles, freelance work and good conversations about software, design, and the occasional kanji.",
-    "emailMe": "Email me",
-    "social": "Find me elsewhere",
-    "copy": "Copy email",
-    "copied": "Copied"
-  },
   "footer": {
     "made": "Designed and built with care in Italy.",
     "rights": "All rights reserved.",
-    "colophon": "Set in PP Editorial New, Geist Mono, Noto Serif JP. Motion by GSAP and Lenis."
+    "colophon": "Set in Fraunces, Geist Mono, Noto Serif JP. Motion by GSAP and Lenis."
   },
   "language": {
     "switchTo": "Switch language",
@@ -96,6 +166,7 @@
   "a11y": {
     "skipToContent": "Skip to content",
     "decorative": "Decorative element",
-    "externalLink": "Opens in new tab"
+    "externalLink": "Opens in new tab",
+    "backToHome": "Back to home"
   }
 }

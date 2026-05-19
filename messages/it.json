@@ -4,9 +4,15 @@
     "description": "Portfolio di Andrea Marchese, sviluppatore Full Stack che costruisce prodotti con TypeScript, Next.js, Go e una quieta dedizione al mestiere. Italia.",
     "keywords": "Andrea Marchese, sviluppatore full stack, Next.js, TypeScript, Go, sviluppatore italiano, portfolio"
   },
+  "pageMeta": {
+    "about": "Chi sono — Andrea Marchese",
+    "work": "Lavori selezionati — Andrea Marchese",
+    "journey": "Percorso — Andrea Marchese",
+    "contact": "Contatti — Andrea Marchese"
+  },
   "nav": {
+    "home": "Home",
     "about": "Chi sono",
-    "skills": "Competenze",
     "work": "Progetti",
     "journey": "Percorso",
     "contact": "Contatti",
@@ -18,23 +24,86 @@
     "status": "Aperto a nuove opportunità",
     "role": "Sviluppatore Full Stack",
     "tagline": "Costruisco cose che vanno in produzione.",
-    "intro": "Prodotti web duraturi in TypeScript, Next.js e con la disciplina di un samurai.",
+    "intro": "Prodotti web duraturi in TypeScript e Next.js, con la disciplina silenziosa di un samurai.",
     "scroll": "Scorri per entrare",
-    "based": "Basato in Italia"
+    "based": "Basato in Italia",
+    "exploreAbout": "Leggi chi sono",
+    "exploreWork": "Vai ai progetti"
+  },
+  "home": {
+    "pulse": {
+      "label": "In questo momento",
+      "title": "Sto costruendo MogHouse — una casa per i giocatori di FFXIV.",
+      "items": [
+        "Ascolto lo-fi shamisen",
+        "Leggo «Hagakure»",
+        "Allenamento hiragana → katakana"
+      ]
+    },
+    "teaserHeading": "Dove andare adesso.",
+    "teaserIntro": "Il sito ha quattro capitoli. Scegli quello che ti interessa.",
+    "teasers": {
+      "about": {
+        "label": "Chi sono",
+        "title": "Chi c'è dietro la tastiera.",
+        "blurb": "Una bio breve, cosa mi importa davvero e la disciplina che porto nel software.",
+        "cta": "Leggi di più"
+      },
+      "work": {
+        "label": "Progetti",
+        "title": "Cose che ho spedito.",
+        "blurb": "Una selezione voluta di prodotti e piattaforme progettate e costruite end-to-end.",
+        "cta": "Vedi i progetti"
+      },
+      "journey": {
+        "label": "Percorso",
+        "title": "Il cammino finora.",
+        "blurb": "Ruoli, svolte e lezioni imparate lungo il tragitto.",
+        "cta": "Apri timeline"
+      },
+      "contact": {
+        "label": "Contatti",
+        "title": "Costruiamo qualcosa.",
+        "blurb": "Disponibile per ruoli ben fatti e ingaggi freelance.",
+        "cta": "Mettiti in contatto"
+      }
+    },
+    "finalCta": {
+      "kicker": "Se sei arrivato fin qui",
+      "title": "Probabilmente dovremmo parlarci.",
+      "lead": "Che sia un ruolo, un progetto o una buona conversazione sul software — mi piacerebbe sentirti.",
+      "primary": "Scrivimi",
+      "secondary": "Sfoglia i progetti"
+    }
   },
   "about": {
-    "kanji": "我",
-    "reading": "ware",
-    "label": "Chi sono",
+    "kicker": "Chi sono",
     "title": "Curioso per natura.",
-    "body": "Sono Andrea — uno sviluppatore Full Stack che tratta il software come un mestiere artigiano. Mi importano i dettagli: un bottone che risponde bene, una query che non rallenta a 100k righe, un'interfaccia che rispetta il tempo di chi la usa. Influenzato in egual misura dal design editoriale e dal bushidō — la via del miglioramento disciplinato.",
-    "footnote": "Italiano. Costruttore. Lettore. Aspirante iaidoka."
-  },
-  "skills": {
-    "kanji": "技",
-    "reading": "waza",
-    "label": "Competenze",
-    "title": "Gli strumenti del mestiere.",
+    "lead": "Sono Andrea — uno sviluppatore Full Stack che tratta il software come un mestiere. Mi importano i dettagli: un bottone che risponde bene, una query che non rallenta a 100k righe, un'interfaccia che rispetta il tempo di chi la usa.",
+    "body": [
+      "Lavoro principalmente con TypeScript sul web — Next.js, React, Node — ma mi muovo a mio agio in tutto lo stack: Postgres, Go per i pezzi performance-critical, Python per dati e ML.",
+      "Il mio approccio è influenzato in egual misura dal design editoriale e dal bushidō — la via del miglioramento disciplinato. Preferisco una cosa ben fatta a cinque cose veloci. Le fondamenta noiose alle astrazioni vistose. Le lezioni dalla produzione all'hype.",
+      "Fuori dall'editor leggo, mi alleno (lentamente) nello iaidō, e viaggio — soprattutto in Giappone, dove l'ossessione per il mestiere mi fa sentire a casa."
+    ],
+    "values": {
+      "label": "Quello a cui tengo",
+      "items": [
+        {
+          "title": "Mestiere prima della velocità",
+          "body": "Lavoro più lento e voluto si accumula nel tempo. Spedire veloce su fondamenta marce è una tassa che qualcuno paga sempre dopo."
+        },
+        {
+          "title": "Chiarezza prima dell'astuzia",
+          "body": "Codice leggibile è gentile col tuo te futuro e con la prossima persona che ci mette mano. Le astrazioni si guadagnano il loro posto."
+        },
+        {
+          "title": "Rispetta chi usa",
+          "body": "Il suo tempo, la sua banda, la sua attenzione, la sua accessibilità. Niente di tutto questo è un dettaglio finale."
+        }
+      ]
+    },
+    "skillsLabel": "Gli strumenti",
+    "skillsIntro": "Comodo su tutto lo stack. Onesto su dove sono fluente e dove sto ancora imparando.",
     "categories": {
       "frontend": "Frontend",
       "backend": "Backend",
@@ -42,11 +111,41 @@
       "ops": "DevOps & Strumenti"
     }
   },
+  "work": {
+    "kicker": "Lavori selezionati",
+    "title": "Cose che ho spedito.",
+    "lead": "Una selezione corta e voluta — qualità prima di quantità. Quasi tutti i progetti sono end-to-end: prodotto, design, sviluppo, deploy.",
+    "viewCase": "Apri caso",
+    "viewLive": "Visita sito",
+    "viewCode": "Sorgente",
+    "tech": "Stack",
+    "role": "Ruolo",
+    "year": "Anno"
+  },
+  "journey": {
+    "kicker": "Percorso",
+    "title": "Il cammino finora.",
+    "lead": "Ruoli, tappe e svolte. Senza fronzoli."
+  },
+  "contact": {
+    "kicker": "Contatti",
+    "title": "Costruiamo qualcosa.",
+    "lead": "Sono aperto a ruoli interessanti, freelance e buone conversazioni su software, design e — ogni tanto — qualche kanji.",
+    "emailMe": "Scrivimi",
+    "social": "Trovami altrove",
+    "copy": "Copia email",
+    "copied": "Copiato",
+    "responseTime": "Di solito rispondo entro un giorno o due.",
+    "form": {
+      "name": "Nome",
+      "email": "La tua email",
+      "message": "Cosa hai in mente?",
+      "send": "Invia"
+    }
+  },
   "stats": {
-    "kanji": "統計",
-    "reading": "tōkei",
-    "label": "Statistiche live",
-    "title": "Battito da GitHub",
+    "label": "Battito live",
+    "title": "Attività GitHub",
     "repos": "Repo pubblici",
     "stars": "Stelle ricevute",
     "followers": "Follower",
@@ -54,39 +153,10 @@
     "updated": "Aggiornato ogni ora",
     "error": "Statistiche temporaneamente non disponibili"
   },
-  "work": {
-    "kanji": "業",
-    "reading": "waza",
-    "label": "Lavori selezionati",
-    "title": "Cose che ho spedito.",
-    "intro": "Una selezione corta e voluta — qualità prima di quantità.",
-    "viewCase": "Apri caso",
-    "viewLive": "Visita sito",
-    "viewCode": "Sorgente",
-    "tech": "Stack"
-  },
-  "journey": {
-    "kanji": "道",
-    "reading": "michi",
-    "label": "Percorso",
-    "title": "Il cammino finora.",
-    "intro": "Ruoli, tappe e svolte."
-  },
-  "contact": {
-    "kanji": "縁",
-    "reading": "en",
-    "label": "Connetti",
-    "title": "Costruiamo qualcosa.",
-    "intro": "Sono aperto a ruoli interessanti, freelance, e buone conversazioni su software, design e — ogni tanto — qualche kanji.",
-    "emailMe": "Scrivimi",
-    "social": "Trovami altrove",
-    "copy": "Copia email",
-    "copied": "Copiato"
-  },
   "footer": {
     "made": "Progettato e costruito con cura in Italia.",
     "rights": "Tutti i diritti riservati.",
-    "colophon": "Composto in PP Editorial New, Geist Mono, Noto Serif JP. Motion con GSAP e Lenis."
+    "colophon": "Composto in Fraunces, Geist Mono, Noto Serif JP. Motion con GSAP e Lenis."
   },
   "language": {
     "switchTo": "Cambia lingua",
@@ -96,6 +166,7 @@
   "a11y": {
     "skipToContent": "Vai al contenuto",
     "decorative": "Elemento decorativo",
-    "externalLink": "Apre in nuova scheda"
+    "externalLink": "Apre in nuova scheda",
+    "backToHome": "Torna alla home"
   }
 }
