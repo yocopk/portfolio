@@ -31,6 +31,13 @@
     "exploreWork": "See selected work"
   },
   "home": {
+    "manifesto": {
+      "kicker": "Manifesto",
+      "lineOne": "Software is craft.",
+      "lineTwo": "Every detail matters.",
+      "tail": "Slow, deliberate, durable.",
+      "footnote": "A short list of things I believe, after eight years of writing code that has to survive contact with users."
+    },
     "pulse": {
       "label": "Currently",
       "title": "Building MogHouse — a home for FFXIV players.",
@@ -40,33 +47,35 @@
         "Training hiragana → katakana"
       ]
     },
-    "teaserHeading": "Where to go next.",
-    "teaserIntro": "The site has four chapters. Pick the one that matches what you came for.",
-    "teasers": {
-      "about": {
-        "label": "About",
-        "title": "Who's behind the keyboard.",
-        "blurb": "A short bio, what I care about, and the discipline I bring to software.",
-        "cta": "Read about"
-      },
-      "work": {
-        "label": "Work",
-        "title": "Things I've shipped.",
-        "blurb": "A deliberate selection of products and platforms I've designed and built end-to-end.",
-        "cta": "See work"
-      },
-      "journey": {
-        "label": "Journey",
-        "title": "The path so far.",
-        "blurb": "Roles, turning points, lessons learned along the way.",
-        "cta": "Open timeline"
-      },
-      "contact": {
-        "label": "Contact",
-        "title": "Let's build something.",
-        "blurb": "Available for thoughtful roles and freelance engagements.",
-        "cta": "Get in touch"
-      }
+    "aboutPeek": {
+      "kicker": "About",
+      "title": "Curious by default.",
+      "paragraphs": [
+        "I'm Andrea — a Full Stack developer who treats software like a craft. I care about the small details: a button that feels right, a query that doesn't slow at 100k rows, a UI that respects the user's time.",
+        "I work mainly with TypeScript on the web, but move comfortably across the stack. My approach is shaped by editorial design and by the bushidō — the way of disciplined improvement."
+      ],
+      "valuesLabel": "Three things I keep in mind",
+      "values": [
+        { "title": "Craft over speed", "body": "Slow work compounds. Rushed foundations are a tax someone always pays later." },
+        { "title": "Clarity over cleverness", "body": "Readable code is kinder to your future self. Abstractions earn their place." },
+        { "title": "Respect the user", "body": "Their time, bandwidth and attention — none should be an afterthought." }
+      ],
+      "cta": "Read the full bio"
+    },
+    "featuredWork": {
+      "kicker": "Recent work",
+      "title": "Three I'm proud of right now.",
+      "intro": "Quality over quantity. End-to-end products — design, build, deploy.",
+      "cta": "See all work"
+    },
+    "marquee": {
+      "label": "The toolkit"
+    },
+    "journeyPeek": {
+      "kicker": "Journey",
+      "title": "Where I've been.",
+      "intro": "A short look at the path so far.",
+      "cta": "Open full timeline"
     },
     "finalCta": {
       "kicker": "If you read this far",

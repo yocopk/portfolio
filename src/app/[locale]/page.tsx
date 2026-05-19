@@ -1,7 +1,11 @@
 import { setRequestLocale } from "next-intl/server";
 import { Hero } from "@/components/sections/Hero";
+import { HomeManifesto } from "@/components/sections/HomeManifesto";
 import { HomePulse } from "@/components/sections/HomePulse";
-import { HomeTeaser } from "@/components/sections/HomeTeaser";
+import { HomeAboutPeek } from "@/components/sections/HomeAboutPeek";
+import { HomeFeaturedWork } from "@/components/sections/HomeFeaturedWork";
+import { HomeMarquee } from "@/components/sections/HomeMarquee";
+import { HomeJourneyPeek } from "@/components/sections/HomeJourneyPeek";
 import { HomeFinalCTA } from "@/components/sections/HomeFinalCTA";
 
 export default async function HomePage({
@@ -15,8 +19,12 @@ export default async function HomePage({
   return (
     <>
       <Hero />
+      <HomeManifesto />
       <HomePulse />
-      <HomeTeaser />
+      <HomeAboutPeek />
+      <HomeFeaturedWork />
+      <HomeMarquee />
+      <HomeJourneyPeek />
       <HomeFinalCTA />
     </>
   );

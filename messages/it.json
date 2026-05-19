@@ -31,6 +31,13 @@
     "exploreWork": "Vai ai progetti"
   },
   "home": {
+    "manifesto": {
+      "kicker": "Manifesto",
+      "lineOne": "Il software è un mestiere.",
+      "lineTwo": "Ogni dettaglio conta.",
+      "tail": "Lento, voluto, duraturo.",
+      "footnote": "Una breve lista di cose in cui credo, dopo otto anni a scrivere codice che deve sopravvivere all'incontro con gli utenti."
+    },
     "pulse": {
       "label": "In questo momento",
       "title": "Sto costruendo MogHouse — una casa per i giocatori di FFXIV.",
@@ -40,33 +47,35 @@
         "Allenamento hiragana → katakana"
       ]
     },
-    "teaserHeading": "Dove andare adesso.",
-    "teaserIntro": "Il sito ha quattro capitoli. Scegli quello che ti interessa.",
-    "teasers": {
-      "about": {
-        "label": "Chi sono",
-        "title": "Chi c'è dietro la tastiera.",
-        "blurb": "Una bio breve, cosa mi importa davvero e la disciplina che porto nel software.",
-        "cta": "Leggi di più"
-      },
-      "work": {
-        "label": "Progetti",
-        "title": "Cose che ho spedito.",
-        "blurb": "Una selezione voluta di prodotti e piattaforme progettate e costruite end-to-end.",
-        "cta": "Vedi i progetti"
-      },
-      "journey": {
-        "label": "Percorso",
-        "title": "Il cammino finora.",
-        "blurb": "Ruoli, svolte e lezioni imparate lungo il tragitto.",
-        "cta": "Apri timeline"
-      },
-      "contact": {
-        "label": "Contatti",
-        "title": "Costruiamo qualcosa.",
-        "blurb": "Disponibile per ruoli ben fatti e ingaggi freelance.",
-        "cta": "Mettiti in contatto"
-      }
+    "aboutPeek": {
+      "kicker": "Chi sono",
+      "title": "Curioso per natura.",
+      "paragraphs": [
+        "Sono Andrea — sviluppatore Full Stack che tratta il software come un mestiere. Mi importano i dettagli: un bottone che risponde bene, una query che non rallenta a 100k righe, un'interfaccia che rispetta il tempo di chi la usa.",
+        "Lavoro principalmente con TypeScript sul web, ma mi muovo a mio agio in tutto lo stack. Il mio approccio è influenzato dal design editoriale e dal bushidō — la via del miglioramento disciplinato."
+      ],
+      "valuesLabel": "Tre cose che tengo a mente",
+      "values": [
+        { "title": "Mestiere prima della velocità", "body": "Lavoro lento si accumula. Fondamenta affrettate sono una tassa che qualcuno paga sempre dopo." },
+        { "title": "Chiarezza prima dell'astuzia", "body": "Codice leggibile è gentile col tuo te futuro. Le astrazioni si guadagnano il loro posto." },
+        { "title": "Rispetta chi usa", "body": "Il suo tempo, la sua banda e la sua attenzione — niente di tutto questo è un dettaglio finale." }
+      ],
+      "cta": "Leggi la bio completa"
+    },
+    "featuredWork": {
+      "kicker": "Lavori recenti",
+      "title": "Tre di cui sono fiero adesso.",
+      "intro": "Qualità prima di quantità. Prodotti end-to-end — design, sviluppo, deploy.",
+      "cta": "Vedi tutti i progetti"
+    },
+    "marquee": {
+      "label": "Lo stack"
+    },
+    "journeyPeek": {
+      "kicker": "Percorso",
+      "title": "Dove sono stato.",
+      "intro": "Uno sguardo veloce al cammino finora.",
+      "cta": "Apri la timeline completa"
     },
     "finalCta": {
       "kicker": "Se sei arrivato fin qui",
