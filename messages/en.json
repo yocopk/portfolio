@@ -1,0 +1,101 @@
+{
+  "meta": {
+    "title": "Andrea Marchese — Full Stack Developer",
+    "description": "Portfolio of Andrea Marchese, Full Stack developer building products with TypeScript, Next.js, Go and a quiet love for craft. Based in Italy.",
+    "keywords": "Andrea Marchese, full stack developer, Next.js, TypeScript, Go, Italian developer, portfolio"
+  },
+  "nav": {
+    "about": "About",
+    "skills": "Skills",
+    "work": "Work",
+    "journey": "Journey",
+    "contact": "Contact",
+    "resume": "Résumé",
+    "menu": "Open menu",
+    "close": "Close menu"
+  },
+  "hero": {
+    "status": "Open to opportunities",
+    "role": "Full Stack Developer",
+    "tagline": "I build things that ship.",
+    "intro": "Crafting durable web products with TypeScript, Next.js and a samurai's discipline.",
+    "scroll": "Scroll to enter",
+    "based": "Based in Italy"
+  },
+  "about": {
+    "kanji": "我",
+    "reading": "ware",
+    "label": "About",
+    "title": "Curious by default.",
+    "body": "I'm Andrea — a Full Stack developer who treats software like a craft. I care about the small details: a button that feels right, a query that doesn't slow down at 100k rows, a UI that respects the user's time. Influenced equally by editorial design and by the bushidō — the way of disciplined improvement.",
+    "footnote": "Italian. Builder. Reader. Aspiring iaidoka."
+  },
+  "skills": {
+    "kanji": "技",
+    "reading": "waza",
+    "label": "Skills",
+    "title": "The toolkit.",
+    "categories": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "data": "Data & AI",
+      "ops": "DevOps & Tools"
+    }
+  },
+  "stats": {
+    "kanji": "統計",
+    "reading": "tōkei",
+    "label": "Live stats",
+    "title": "Pulse from GitHub",
+    "repos": "Public repos",
+    "stars": "Stars earned",
+    "followers": "Followers",
+    "topLanguage": "Top language",
+    "updated": "Updated hourly",
+    "error": "Stats temporarily unavailable"
+  },
+  "work": {
+    "kanji": "業",
+    "reading": "waza",
+    "label": "Selected work",
+    "title": "Things I've shipped.",
+    "intro": "A short, deliberate selection — quality over quantity.",
+    "viewCase": "View case",
+    "viewLive": "Visit site",
+    "viewCode": "Source",
+    "tech": "Stack"
+  },
+  "journey": {
+    "kanji": "道",
+    "reading": "michi",
+    "label": "Journey",
+    "title": "The path so far.",
+    "intro": "Roles, milestones and turning points."
+  },
+  "contact": {
+    "kanji": "縁",
+    "reading": "en",
+    "label": "Connect",
+    "title": "Let's build something.",
+    "intro": "I'm open to interesting roles, freelance work and good conversations about software, design, and the occasional kanji.",
+    "emailMe": "Email me",
+    "social": "Find me elsewhere",
+    "copy": "Copy email",
+    "copied": "Copied"
+  },
+  "footer": {
+    "made": "Designed and built with care in Italy.",
+    "rights": "All rights reserved.",
+    "colophon": "Set in PP Editorial New, Geist Mono, Noto Serif JP. Motion by GSAP and Lenis."
+  },
+  "language": {
+    "switchTo": "Switch language",
+    "en": "English",
+    "it": "Italiano"
+  },
+  "a11y": {
+    "skipToContent": "Skip to content",
+    "decorative": "Decorative element",
+    "externalLink": "Opens in new tab"
+  }
+}

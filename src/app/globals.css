@@ -1,0 +1,271 @@
+@import "tailwindcss";
+
+/* ─────────────────────────────────────────────
+   BENTO BUSHIDŌ — design tokens
+   Inspired by sumi-e ink, washi paper, lacquered wood
+   ───────────────────────────────────────────── */
+@theme {
+  /* Palette */
+  --color-sumi: #0e0d0c;
+  --color-sumi-soft: #1a1916;
+  --color-sumi-faint: #2a2622;
+  --color-washi: #f4ede1;
+  --color-washi-deep: #e8dfcd;
+  --color-washi-soft: #fbf7ee;
+  --color-shu: #c8372d;
+  --color-shu-deep: #a02a22;
+  --color-shu-faint: #ddb3ae;
+  --color-gold: #b8956a;
+  --color-stone: #6b6661;
+  --color-stone-light: #8d8780;
+  --color-stone-faint: #c9c1b3;
+
+  /* Semantic aliases */
+  --color-ink: var(--color-sumi);
+  --color-paper: var(--color-washi);
+  --color-accent: var(--color-shu);
+  --color-muted: var(--color-stone);
+
+  /* Fonts — loaded via next/font in layout */
+  --font-display: var(--font-editorial), "Times New Roman", Georgia, serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, "Cascadia Code", Menlo, monospace;
+  --font-kanji: var(--font-noto-jp), "Yu Mincho", "Hiragino Mincho ProN", "MS Mincho", serif;
+
+  /* Fluid type scale */
+  --text-mono-2xs: 0.6875rem;
+  --text-hero: clamp(3.5rem, 1rem + 12vw, 13rem);
+  --text-display: clamp(2.5rem, 1rem + 6vw, 5.5rem);
+  --text-heading: clamp(1.625rem, 0.9rem + 2vw, 2.75rem);
+  --text-lead: clamp(1.0625rem, 0.95rem + 0.4vw, 1.25rem);
+
+  /* Spacing */
+  --space-section: clamp(5rem, 4rem + 5vw, 10rem);
+
+  /* Easings — borrowed from brush calligraphy timing */
+  --ease-zen: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-brush: cubic-bezier(0.7, 0, 0.3, 1);
+  --ease-snap: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  --duration-fast: 200ms;
+  --duration-normal: 400ms;
+  --duration-slow: 900ms;
+
+  /* Radii — subtle, paper-like */
+  --radius-card: 14px;
+  --radius-pill: 999px;
+
+  /* Shadows — soft, paper-on-wood */
+  --shadow-paper: 0 1px 0 rgba(20, 18, 16, 0.04),
+                   0 2px 6px rgba(20, 18, 16, 0.06),
+                   0 12px 32px -8px rgba(20, 18, 16, 0.08);
+  --shadow-paper-lift: 0 2px 0 rgba(20, 18, 16, 0.04),
+                        0 8px 20px rgba(20, 18, 16, 0.10),
+                        0 24px 60px -12px rgba(20, 18, 16, 0.14);
+  --shadow-ink: 0 0 0 1px rgba(14, 13, 12, 0.06);
+}
+
+/* ─────────────────────────────────────────────
+   Base reset + body typography
+   ───────────────────────────────────────────── */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  background: var(--color-washi);
+  color: var(--color-sumi);
+  font-feature-settings: "ss01", "ss02", "cv11", "kern";
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.6;
+  background:
+    radial-gradient(ellipse 1200px 800px at 20% -10%, color-mix(in oklch, var(--color-shu-faint) 18%, transparent), transparent 60%),
+    radial-gradient(ellipse 900px 700px at 100% 10%, color-mix(in oklch, var(--color-gold) 12%, transparent), transparent 60%),
+    var(--color-washi);
+  background-attachment: fixed;
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Washi grain — fine SVG noise overlay across the whole document */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240' viewBox='0 0 240 240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.1  0 0 0 0 0.09  0 0 0 0 0.08  0 0 0 0.18 0'/></filter><rect width='240' height='240' filter='url(%23n)'/></svg>");
+  background-size: 240px 240px;
+}
+
+/* Vermilion bar accent in the corner — a small hanko-like stamp */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    var(--color-shu) 12%,
+    var(--color-shu) 18%,
+    transparent 30%,
+    transparent 100%);
+  z-index: 50;
+  pointer-events: none;
+}
+
+/* Allow components to render above grain */
+main, header, footer, [data-above-grain] {
+  position: relative;
+  z-index: 2;
+}
+
+/* Selection — vermilion ink */
+::selection {
+  background: var(--color-shu);
+  color: var(--color-washi);
+}
+
+/* Focus rings — bold and unmistakable */
+:focus-visible {
+  outline: 2px solid var(--color-shu);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ─────────────────────────────────────────────
+   Custom cursor — hide on devices that have one
+   ───────────────────────────────────────────── */
+@media (hover: hover) and (pointer: fine) {
+  html.has-custom-cursor,
+  html.has-custom-cursor * {
+    cursor: none !important;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   Utilities — used by components
+   ───────────────────────────────────────────── */
+@utility font-display {
+  font-family: var(--font-display);
+  font-feature-settings: "ss01", "liga", "dlig";
+}
+@utility font-kanji {
+  font-family: var(--font-kanji);
+  font-feature-settings: normal;
+}
+@utility font-mono-ui {
+  font-family: var(--font-mono);
+  font-feature-settings: "ss01", "zero", "tnum";
+}
+
+/* Seigaiha (青海波) wave pattern — used sparingly as section divider */
+@utility seigaiha {
+  background-image:
+    radial-gradient(circle at 50% 100%, transparent 32%, currentColor 32%, currentColor 33%, transparent 33.5%),
+    radial-gradient(circle at 0% 100%, transparent 32%, currentColor 32%, currentColor 33%, transparent 33.5%),
+    radial-gradient(circle at 100% 100%, transparent 32%, currentColor 32%, currentColor 33%, transparent 33.5%);
+  background-size: 36px 18px;
+  background-position: 0 0, 18px 9px, -18px 9px;
+  color: color-mix(in oklch, var(--color-sumi) 12%, transparent);
+}
+
+/* Asanoha (麻の葉) — hemp leaf, used very sparingly */
+@utility asanoha {
+  background-image:
+    linear-gradient(60deg, transparent 49.5%, currentColor 49.5%, currentColor 50.5%, transparent 50.5%),
+    linear-gradient(-60deg, transparent 49.5%, currentColor 49.5%, currentColor 50.5%, transparent 50.5%);
+  background-size: 24px 42px;
+  color: color-mix(in oklch, var(--color-sumi) 8%, transparent);
+}
+
+/* Bento card surface */
+@utility bento-card {
+  position: relative;
+  border-radius: var(--radius-card);
+  background: color-mix(in oklch, var(--color-washi-soft) 92%, var(--color-washi));
+  box-shadow: var(--shadow-paper);
+  border: 1px solid color-mix(in oklch, var(--color-sumi) 6%, transparent);
+  transition: transform var(--duration-normal) var(--ease-zen),
+              box-shadow var(--duration-normal) var(--ease-zen);
+  overflow: hidden;
+}
+@utility bento-card-dark {
+  background: var(--color-sumi);
+  color: var(--color-washi);
+  border-color: color-mix(in oklch, var(--color-washi) 8%, transparent);
+}
+
+@utility bento-card-shu {
+  background: var(--color-shu);
+  color: var(--color-washi);
+  border-color: var(--color-shu-deep);
+}
+
+/* Brush-stroke underline — used in CTAs/links */
+@utility brush-underline {
+  background-image: linear-gradient(transparent 88%, color-mix(in oklch, var(--color-shu) 50%, transparent) 88%, color-mix(in oklch, var(--color-shu) 50%, transparent) 96%, transparent 96%);
+  background-size: 0% 100%;
+  background-repeat: no-repeat;
+  transition: background-size var(--duration-slow) var(--ease-brush);
+}
+@utility brush-underline-active {
+  background-size: 100% 100%;
+}
+
+/* ─────────────────────────────────────────────
+   Reduced motion — strip parallax + transitions
+   ───────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* GSAP utility: pre-state for character reveals */
+.split-char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(0.6em) rotate(2deg);
+  will-change: transform, opacity;
+}
+
+/* Brush SVG stroke — animated via JS by setting stroke-dashoffset to 0 */
+.brush-stroke path {
+  stroke-dasharray: var(--len, 1200);
+  stroke-dashoffset: var(--len, 1200);
+}
+.brush-stroke.is-revealed path {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 1400ms var(--ease-brush);
+}
+
+/* Kanji stroke-order reveal helper */
+.kanji-reveal {
+  display: inline-block;
+  opacity: 0;
+  filter: blur(6px);
+  transform: scale(1.08);
+}
+.kanji-reveal.is-revealed {
+  opacity: 1;
+  filter: blur(0);
+  transform: scale(1);
+  transition: opacity 900ms var(--ease-zen),
+              filter 900ms var(--ease-zen),
+              transform 900ms var(--ease-zen);
+}

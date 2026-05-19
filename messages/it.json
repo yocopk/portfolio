@@ -1,0 +1,101 @@
+{
+  "meta": {
+    "title": "Andrea Marchese — Sviluppatore Full Stack",
+    "description": "Portfolio di Andrea Marchese, sviluppatore Full Stack che costruisce prodotti con TypeScript, Next.js, Go e una quieta dedizione al mestiere. Italia.",
+    "keywords": "Andrea Marchese, sviluppatore full stack, Next.js, TypeScript, Go, sviluppatore italiano, portfolio"
+  },
+  "nav": {
+    "about": "Chi sono",
+    "skills": "Competenze",
+    "work": "Progetti",
+    "journey": "Percorso",
+    "contact": "Contatti",
+    "resume": "Curriculum",
+    "menu": "Apri menu",
+    "close": "Chiudi menu"
+  },
+  "hero": {
+    "status": "Aperto a nuove opportunità",
+    "role": "Sviluppatore Full Stack",
+    "tagline": "Costruisco cose che vanno in produzione.",
+    "intro": "Prodotti web duraturi in TypeScript, Next.js e con la disciplina di un samurai.",
+    "scroll": "Scorri per entrare",
+    "based": "Basato in Italia"
+  },
+  "about": {
+    "kanji": "我",
+    "reading": "ware",
+    "label": "Chi sono",
+    "title": "Curioso per natura.",
+    "body": "Sono Andrea — uno sviluppatore Full Stack che tratta il software come un mestiere artigiano. Mi importano i dettagli: un bottone che risponde bene, una query che non rallenta a 100k righe, un'interfaccia che rispetta il tempo di chi la usa. Influenzato in egual misura dal design editoriale e dal bushidō — la via del miglioramento disciplinato.",
+    "footnote": "Italiano. Costruttore. Lettore. Aspirante iaidoka."
+  },
+  "skills": {
+    "kanji": "技",
+    "reading": "waza",
+    "label": "Competenze",
+    "title": "Gli strumenti del mestiere.",
+    "categories": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "data": "Dati & AI",
+      "ops": "DevOps & Strumenti"
+    }
+  },
+  "stats": {
+    "kanji": "統計",
+    "reading": "tōkei",
+    "label": "Statistiche live",
+    "title": "Battito da GitHub",
+    "repos": "Repo pubblici",
+    "stars": "Stelle ricevute",
+    "followers": "Follower",
+    "topLanguage": "Linguaggio principale",
+    "updated": "Aggiornato ogni ora",
+    "error": "Statistiche temporaneamente non disponibili"
+  },
+  "work": {
+    "kanji": "業",
+    "reading": "waza",
+    "label": "Lavori selezionati",
+    "title": "Cose che ho spedito.",
+    "intro": "Una selezione corta e voluta — qualità prima di quantità.",
+    "viewCase": "Apri caso",
+    "viewLive": "Visita sito",
+    "viewCode": "Sorgente",
+    "tech": "Stack"
+  },
+  "journey": {
+    "kanji": "道",
+    "reading": "michi",
+    "label": "Percorso",
+    "title": "Il cammino finora.",
+    "intro": "Ruoli, tappe e svolte."
+  },
+  "contact": {
+    "kanji": "縁",
+    "reading": "en",
+    "label": "Connetti",
+    "title": "Costruiamo qualcosa.",
+    "intro": "Sono aperto a ruoli interessanti, freelance, e buone conversazioni su software, design e — ogni tanto — qualche kanji.",
+    "emailMe": "Scrivimi",
+    "social": "Trovami altrove",
+    "copy": "Copia email",
+    "copied": "Copiato"
+  },
+  "footer": {
+    "made": "Progettato e costruito con cura in Italia.",
+    "rights": "Tutti i diritti riservati.",
+    "colophon": "Composto in PP Editorial New, Geist Mono, Noto Serif JP. Motion con GSAP e Lenis."
+  },
+  "language": {
+    "switchTo": "Cambia lingua",
+    "en": "English",
+    "it": "Italiano"
+  },
+  "a11y": {
+    "skipToContent": "Vai al contenuto",
+    "decorative": "Elemento decorativo",
+    "externalLink": "Apre in nuova scheda"
+  }
+}
