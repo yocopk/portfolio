@@ -23,9 +23,10 @@ function splitWord(word: string) {
 export function Hero() {
   const t = useTranslations("hero");
   const rootRef = useRef<HTMLElement>(null);
-  const ensoPathRef = useRef<SVGPathElement>(null);
-  const ensoDotRef = useRef<SVGCircleElement>(null);
   const brushPathRef = useRef<SVGPathElement>(null);
+  const stampRef = useRef<HTMLDivElement>(null);
+  const kanjiRef = useRef<HTMLSpanElement>(null);
+  const stampBrushRef = useRef<SVGPathElement>(null);
 
   useEffect(() => {
     if (!rootRef.current) return;
@@ -36,9 +37,13 @@ export function Hero() {
 
       if (reduced) {
         gsap.set(chars, { opacity: 1, y: 0, rotate: 0, filter: "blur(0px)" });
-        if (brushPathRef.current) gsap.set(brushPathRef.current, { strokeDashoffset: 0 });
-        if (ensoPathRef.current) gsap.set(ensoPathRef.current, { strokeDashoffset: 0 });
-        if (ensoDotRef.current) gsap.set(ensoDotRef.current, { opacity: 0.7 });
+        if (brushPathRef.current)
+          gsap.set(brushPathRef.current, { strokeDashoffset: 0 });
+        if (stampRef.current) gsap.set(stampRef.current, { scale: 1, opacity: 1 });
+        if (kanjiRef.current)
+          gsap.set(kanjiRef.current, { scale: 1, opacity: 1, filter: "blur(0px)" });
+        if (stampBrushRef.current)
+          gsap.set(stampBrushRef.current, { strokeDashoffset: 0 });
         return;
       }
 
@@ -67,24 +72,54 @@ export function Hero() {
         );
       }
 
-      const enso = ensoPathRef.current;
-      if (enso) {
-        const len = enso.getTotalLength();
-        gsap.set(enso, { strokeDasharray: len, strokeDashoffset: len });
+      // Hanko stamp slams in with elastic bounce
+      if (stampRef.current) {
+        gsap.set(stampRef.current, { scale: 0, opacity: 0, rotate: -8 });
         tl.to(
-          enso,
-          { strokeDashoffset: 0, duration: 1.8, ease: "power2.inOut" },
-          "-=1.4",
+          stampRef.current,
+          {
+            scale: 1,
+            opacity: 1,
+            rotate: -3,
+            duration: 1.2,
+            ease: "back.out(1.4)",
+          },
+          "-=1.6",
         );
       }
-      if (ensoDotRef.current) {
-        tl.to(ensoDotRef.current, { opacity: 0.7, duration: 0.2 }, "-=0.05");
+      // Kanji reveals after the stamp lands
+      if (kanjiRef.current) {
+        gsap.set(kanjiRef.current, { scale: 1.4, opacity: 0, filter: "blur(12px)" });
+        tl.to(
+          kanjiRef.current,
+          {
+            scale: 1,
+            opacity: 1,
+            filter: "blur(0px)",
+            duration: 1.1,
+            ease: "expo.out",
+          },
+          "-=0.7",
+        );
+      }
+      // Brush ring traces around the stamp
+      if (stampBrushRef.current) {
+        const len = stampBrushRef.current.getTotalLength();
+        gsap.set(stampBrushRef.current, {
+          strokeDasharray: len,
+          strokeDashoffset: len,
+        });
+        tl.to(
+          stampBrushRef.current,
+          { strokeDashoffset: 0, duration: 1.4, ease: "power2.inOut" },
+          "-=0.8",
+        );
       }
 
       // Parallax on the emblem
       gsap.to("[data-hero-emblem]", {
         yPercent: -22,
-        rotate: 8,
+        rotate: 4,
         ease: "none",
         scrollTrigger: {
           trigger: rootRef.current,
@@ -218,65 +253,90 @@ export function Hero() {
             </motion.div>
           </div>
 
-          {/* Geometric emblem — large enso 円相 */}
+          {/* Hero emblem — large hanko stamp with 武 */}
           <div
             data-hero-emblem
             className="relative hidden h-full items-center justify-center md:flex"
           >
-            <svg
-              viewBox="0 0 320 320"
-              className="h-[clamp(220px,28vw,400px)] w-[clamp(220px,28vw,400px)] text-[var(--color-sumi)]"
-              aria-hidden="true"
-            >
-              {/* Soft outer ring */}
-              <circle
-                cx="160"
-                cy="160"
-                r="148"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1"
-                strokeOpacity="0.1"
-              />
-              {/* Main enso — hand-drawn feel */}
-              <path
-                ref={ensoPathRef}
-                d="M 270 170 C 268 220, 230 268, 170 270 C 100 272, 50 222, 50 152 C 50 80, 100 50, 165 50 C 220 50, 260 90, 270 140"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="14"
-                strokeLinecap="round"
-              />
-              <circle
-                ref={ensoDotRef}
-                cx="270"
-                cy="140"
-                r="5"
-                fill="currentColor"
-                opacity="0"
-              />
-              {/* Vermilion hanko square */}
-              <rect
-                x="230"
-                y="230"
-                width="60"
-                height="60"
-                rx="4"
-                className="fill-[var(--color-shu)]"
-                transform="rotate(-3 260 260)"
-              />
-              <text
-                x="260"
-                y="270"
-                textAnchor="middle"
-                className="font-display fill-[var(--color-washi)]"
-                fontSize="22"
-                fontStyle="italic"
-                transform="rotate(-3 260 260)"
+            <div className="relative h-[clamp(260px,30vw,420px)] w-[clamp(260px,30vw,420px)]">
+              {/* Brush ring that traces around the stamp */}
+              <svg
+                className="absolute inset-0 h-full w-full"
+                viewBox="0 0 420 420"
+                aria-hidden="true"
               >
-                AM
-              </text>
-            </svg>
+                <path
+                  ref={stampBrushRef}
+                  d="M 60 80 C 40 130, 38 250, 70 340 C 110 380, 230 380, 320 360 C 380 340, 390 220, 370 140 C 350 80, 280 50, 200 50 C 150 50, 90 60, 60 80 Z"
+                  fill="none"
+                  stroke="var(--color-sumi)"
+                  strokeWidth="3"
+                  strokeOpacity="0.18"
+                  strokeLinecap="round"
+                />
+              </svg>
+
+              {/* Hanko stamp — big vermilion square with 武 */}
+              <div
+                ref={stampRef}
+                className="absolute inset-[14%] flex items-center justify-center rounded-[14px] bg-[var(--color-sumi)] shadow-[0_18px_50px_-12px_rgba(14,13,12,0.45)]"
+                style={{ transform: "rotate(-3deg)" }}
+              >
+                {/* Vermilion stamp ink layer with subtle texture */}
+                <div className="absolute inset-2 overflow-hidden rounded-[10px] bg-[var(--color-shu)]">
+                  {/* Ink imperfection — top right */}
+                  <span
+                    aria-hidden="true"
+                    className="absolute right-2 top-2 h-2 w-12 bg-[var(--color-sumi)]/15"
+                  />
+                  {/* Ink imperfection — bottom left */}
+                  <span
+                    aria-hidden="true"
+                    className="absolute bottom-3 left-2 h-1.5 w-8 bg-[var(--color-sumi)]/10"
+                  />
+                </div>
+
+                {/* Inset washi border — stamp authenticity */}
+                <span
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-6 rounded-[6px] border-2 border-[var(--color-washi)]/30"
+                />
+
+                {/* 武 kanji */}
+                <span
+                  ref={kanjiRef}
+                  className="relative font-kanji leading-none text-[var(--color-washi)]"
+                  style={{
+                    fontSize: "clamp(140px, 17vw, 240px)",
+                    textShadow:
+                      "0 1px 0 rgba(14,13,12,0.18), 0 0 30px rgba(244,237,225,0.08)",
+                  }}
+                >
+                  武
+                </span>
+
+                {/* Top-left corner mark */}
+                <span
+                  aria-hidden="true"
+                  className="absolute left-4 top-4 font-mono-ui text-[10px] uppercase tracking-[0.2em] text-[var(--color-washi)]/60"
+                >
+                  bu
+                </span>
+                {/* Bottom-right corner mark */}
+                <span
+                  aria-hidden="true"
+                  className="absolute bottom-4 right-4 font-mono-ui text-[10px] uppercase tracking-[0.2em] text-[var(--color-washi)]/60"
+                >
+                  AM · 二〇二六
+                </span>
+              </div>
+
+              {/* Small floating accent dot */}
+              <span
+                aria-hidden="true"
+                className="absolute right-[6%] top-[8%] h-3 w-3 rounded-full bg-[var(--color-shu)]"
+              />
+            </div>
           </div>
         </div>
       </div>

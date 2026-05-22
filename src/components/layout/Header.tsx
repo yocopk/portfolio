@@ -60,17 +60,24 @@ export function Header() {
           scrolled && "bg-[var(--color-washi-soft)]/92",
         )}
       >
-        {/* Logo */}
+        {/* Logo — sumi hanko stamp with 武 kanji */}
         <Link
           href="/"
           aria-label="Andrea Marchese — home"
           className="group flex items-center gap-2.5"
         >
-          <JapaneseEmblem
-            kind="enso"
-            className="h-7 w-7 text-[var(--color-sumi)] transition-transform duration-500 group-hover:rotate-[-12deg]"
-            strokeWidth={2}
-          />
+          <span
+            aria-hidden="true"
+            className="relative inline-flex h-9 w-9 shrink-0 -rotate-2 items-center justify-center rounded-[3px] bg-[var(--color-sumi)] shadow-[0_2px_10px_rgba(14,13,12,0.28)] transition-transform duration-500 group-hover:rotate-2 group-hover:scale-[1.06]"
+          >
+            <span className="font-kanji text-[22px] leading-none text-[var(--color-washi)]">
+              武
+            </span>
+            {/* Vermilion accent dot — top right */}
+            <span className="pointer-events-none absolute right-[3px] top-[3px] h-1.5 w-1.5 rounded-full bg-[var(--color-shu)]" />
+            {/* Inset washi border — stamp feel */}
+            <span className="pointer-events-none absolute inset-[3px] rounded-[2px] border border-[var(--color-washi)]/15" />
+          </span>
           <span className="hidden font-display text-[15px] tracking-tight text-[var(--color-sumi)] sm:block">
             Andrea Marchese
           </span>
